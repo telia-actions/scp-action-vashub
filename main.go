@@ -160,6 +160,9 @@ func Copy(client *ssh.Client) {
 		for _, sourceFile := range sourceFiles {
 			_, file := path.Split(sourceFile)
       log.Printf("📡 File: %s", file)
+      if (file == "") {
+        break;
+      }
 			targetFile := path.Join(targetFileOrFolder, file)
       log.Printf("📡 Targetfile: %s", targetFile)
 
