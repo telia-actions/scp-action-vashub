@@ -52,8 +52,8 @@ inputs:
     description: "sha256 fingerprint of the proxy host public key"
 
 runs:
-  using: "docker"
-  image: "docker://ghcr.io/nicklasfrahm/scp-action:main"
+  using: 'docker'
+  image: 'Dockerfile'
   env:
     DIRECTION: ${{ inputs.direction }}
     SOURCE: ${{ inputs.source }}
