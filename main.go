@@ -146,7 +146,9 @@ func Copy(client *ssh.Client) {
  
 	if len(sourceFiles) == 2 {
 		// Rename file if there is only one source file.
-		if _, err := copy(client, sourceFiles[0], targetFileOrFolder); err != nil {
+    targetFile := path.Join(targetFileOrFolder, sourceFiles[0])
+    log.Printf("📡 Targetfile: %s", sourceFiles[0])
+		if _, err := copy(client, sourceFiles[0], targetFile); err != nil {
       log.Fatalf("❌ Failed to %s file from remote: %v", os.Getenv("DIRECTION"), err)
 		}
 		log.Println("📑 " + sourceFiles[0] + " >> " + targetFileOrFolder)
