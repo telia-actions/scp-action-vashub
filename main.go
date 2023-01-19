@@ -140,14 +140,10 @@ func Copy(client *ssh.Client) {
 	}
 
   log.Printf("%s %sing ...\n", emoji, strings.Title(direction))
-  log.Printf("📡 Number of source files: %d", len(sourceFiles))
-  log.Printf("📡 S0: %s", sourceFiles[0])
-  log.Printf("📡 S1: %s", sourceFiles[1])
  
 	if len(sourceFiles) == 2 {
 		// Rename file if there is only one source file.
-    targetFile := path.Join(targetFileOrFolder, sourceFiles[0])
-    log.Printf("📡 Targetfile: %s", sourceFiles[0])
+    targetFile := path.Join(targetFileOrFolder, sourceFiles[0])    
 		if _, err := copy(client, sourceFiles[0], targetFile); err != nil {
       log.Fatalf("❌ Failed to %s file from remote: %v", os.Getenv("DIRECTION"), err)
 		}
@@ -158,13 +154,11 @@ func Copy(client *ssh.Client) {
 		transferredFiles := int64(0)
 
 		for _, sourceFile := range sourceFiles {
-			_, file := path.Split(sourceFile)
-      log.Printf("📡 File: %s", file)
+			_, file := path.Split(sourceFile)      
       if (file == "") {
         break;
       }
-			targetFile := path.Join(targetFileOrFolder, file)
-      log.Printf("📡 Targetfile: %s", targetFile)
+			targetFile := path.Join(targetFileOrFolder, file)      
 
 			if _, err := copy(client, sourceFile, targetFile); err != nil {
         log.Fatalf("❌ Failed to %s file from remote: %v", os.Getenv("DIRECTION"), err)
