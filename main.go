@@ -155,12 +155,12 @@ func Copy(client *ssh.Client) {
 
 		log.Println("📡 Transferred 1 file")
 	} else {
-    log.Printf("📡 ELSE")
 		transferredFiles := int64(0)
 
 		for _, sourceFile := range sourceFiles {
 			_, file := path.Split(sourceFile)
 			targetFile := path.Join(targetFileOrFolder, file)
+      log.Printf("📡 Targetfile: %s", targetFile)
 
 			if _, err := copy(client, sourceFile, targetFile); err != nil {
         log.Fatalf("❌ Failed to %s file from remote: %v", os.Getenv("DIRECTION"), err)
