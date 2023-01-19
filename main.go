@@ -140,7 +140,7 @@ func Copy(client *ssh.Client) {
 	}
 
 	log.Printf("%s %sing ...\n", emoji, strings.Title(direction))
-  log.Println("📡 Number of source files: " + len(sourceFiles))
+  log.Printf("📡 Number of source files: " + len(sourceFiles))
 	if len(sourceFiles) == 1 {
 		// Rename file if there is only one source file.
 		if _, err := copy(client, sourceFiles[0], targetFileOrFolder); err != nil {
