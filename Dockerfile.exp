@@ -1,0 +1,3 @@
+FROM vash-docker.jfrog.teliacompany.io/scp-action-vashub:latest as run
+COPY /app/app /app
+ENTRYPOINT [ "/app" ]
